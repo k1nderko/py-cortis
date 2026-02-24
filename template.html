@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Заключение</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.5; }
+    .header { text-align: center; margin-bottom: 24px; }
+    .field { margin: 8px 0; }
+    .label { font-weight: bold; }
+    .docs { margin-top: 20px; }
+    .doc-item { margin: 6px 0; padding-left: 12px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <p>Государственное бюджетное учреждение здравоохранения Новосибирской области "Городская поликлиника № 29"</p>
+    <p>630129, Новосибирская область, город Новосибирск, улица Рассветная, дом 1, Контакты: +73832289209</p>
+    <p>Лицензия: ЛО-54-01-005940, Министерство здравоохранения Новосибирской области. Дата регистрации: 11.06.2020</p>
+  </div>
+
+  <h3>Заключение о результатах медицинского освидетельствования лиц, желающих<br>
+  усыновить (удочерить), взять под опеку (попечительство), в приемную или<br>
+  патронатную семью детей, оставшихся без попечения родителей</h3>
+
+  <p>Наименование органа, куда представляется заключение: Отдел опеки и попечительства<br>
+  Администрации Калининского района</p>
+
+  <div class="field"><span class="label">ФИО:</span> {client.fullName}</div>
+  <div class="field"><span class="label">Пол:</span> {if: client.sex == 'М'}Мужской{:elif: client.sex == 'Ж'}Женский{:else}{client.sex}{:end} <span class="label">Дата рождения:</span> {client.birthDate}</div>
+  <div class="field"><span class="label">Адрес по месту жительства (пребывания):</span> {client.locAddress}</div>
+
+  <p>Заключение на основании решения врачебной комиссии: Выявлено отсутствие заболевания<br>
+  (заболеваний), при наличии которого (которых) лицо не может усыновить ребенка</p>
+
+  <p class="label">Связанные документы</p>
+  <div class="docs">
+{for: action in event.actions}
+    <div class="doc-item"><b>{action.name}</b> от {action.endDate}: {action.value}</div>
+{:end}
+  </div>
+
+  <p style="margin-top: 24px;">Председатель врачебной комиссии:<br>
+  Заведующий отделением медицинской организации,<br>
+  _______________ ЭЦП АВТОРА</p>
+</body>
+</html>
